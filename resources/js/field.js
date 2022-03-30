@@ -6,7 +6,11 @@ import PortalVue from 'portal-vue'
 const attachPortalTarget = () => {
     if (typeof document === undefined) return
     if (document.querySelector('#portal-target')) return
+
     const div = document.createElement('div');
+
+    div.setAttribute('id', 'portal-target')
+
     document.querySelector('body').prepend(div)
 }
 
