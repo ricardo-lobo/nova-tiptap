@@ -48,7 +48,7 @@ export default {
             } else if (this.button == 'orderedList') {
                 return ['fas', 'list-ol'];
             } else if (this.button == 'horizontalRule') {
-                return ['fas', 'horizontal-rule'];
+                return ['fas', 'minus'];
             } else if (this.button == 'table') {
                 return ['fas', 'table'];
             } else if (this.button == 'subscript') {

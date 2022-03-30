@@ -5,7 +5,7 @@
             :isDisabled="mode != 'editor'"
             :clickMethod="setRtl"
             :title="'RTL'"
-            :icon="['fas', 'paragraph-rtl']"
+            :icon="['fas', 'align-right']"
         >
         </base-button>
     </span>
@@ -35,7 +35,7 @@ export default {
                 okNodes.forEach(
                     nodename => this.editor.chain().focus().updateAttributes(nodename, { dir: 'ltr' }).run()
                 );
-                 
+
             } else {
                 okNodes.forEach(
                     nodename => this.editor.chain().focus().updateAttributes(nodename, { dir: 'rtl' }).run()

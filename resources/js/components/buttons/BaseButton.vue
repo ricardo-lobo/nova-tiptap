@@ -6,26 +6,26 @@
             btn btn-default
             p-2 m-1
             leading-none text-xs
-            min-w-8 h-8 
+            min-w-8 h-8
             tiptap-button
         "
-        :class="{ 
+        :class="{
             'btn-primary': isActive,
             'bg-white hover:bg-20': !isActive,
             'opacity-50 pointer-events-none': isDisabled,
         }"
         @click="callClickMethod"
     >
-        <div 
+        <div
             class="
                 transition-opacity opacity-0 group-hover:opacity-100 pointer-events-none
                 absolute left-0 bottom-9 w-full flex justify-center z-100
             "
         >
-            <div 
+            <div
                 v-html="title"
                 class="
-                    whitespace-nowrap bg-black 
+                    whitespace-nowrap bg-black
                     text-2xs text-white font-semibold capitalize
                     px-1 py-px rounded
                 "
@@ -50,28 +50,21 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
-    faHorizontalRule,
-    faParagraphRtl,
-    faImagePolaroid
-} from '@fortawesome/pro-solid-svg-icons';
-
-import {
-    faCube
-} from '@fortawesome/pro-regular-svg-icons';
-
-import { 
     faAlignCenter,
     faAlignJustify,
     faAlignLeft,
     faAlignRight,
+    faCamera,
+    faMinus,
     faBold,
     faCode,
+    faCube,
     faCubes,
     faFileCode,
     faHighlighter,
     faImage,
     faItalic,
-    faLink, 
+    faLink,
     faListOl,
     faListUl,
     faParagraph,
@@ -87,6 +80,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
+    faCamera,
+    faMinus,
     faAlignCenter,
     faAlignJustify,
     faAlignLeft,
@@ -97,15 +92,12 @@ library.add(
     faCubes,
     faFileCode,
     faHighlighter,
-    faHorizontalRule,
     faImage,
-    faImagePolaroid,
     faItalic,
-    faLink, 
+    faLink,
     faListOl,
     faListUl,
     faParagraph,
-    faParagraphRtl,
     faQuoteRight,
     faRedoAlt,
     faStrikethrough,
@@ -121,7 +113,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
     props: [
-        'clickMethod', 
+        'clickMethod',
         'clickMethodParameters',
         'title',
         'isActive',

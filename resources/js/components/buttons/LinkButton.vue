@@ -1,5 +1,8 @@
 <template>
     <span class="z-10">
+        <MountingPortal mountTo="#portal-target" name="source" append v-show="linkMenuIsActive">
+            <p>Content for the Target</p>
+        </MountingPortal>
         <div
             class="
                 fixed top-0 left-0
@@ -11,7 +14,7 @@
             <div class="rounded-lg shadow-lg overflow-hidden z-20 w-full w-action-fields max-w-full">
                 <div class="px-8 py-8 bg-white">
                     <template v-if="withFileUpload">
-                        <span 
+                        <span
                             class="cursor-pointer font-bold text-sm border-b-2 "
                             :class="{
                                 'text-primary border-primary': linkMode == 'url',
@@ -22,7 +25,7 @@
                         >
                         </span>
 
-                        <span 
+                        <span
                             class="ml-2 cursor-pointer font-bold text-sm border-b-2 "
                             :class="{
                                 'text-primary border-primary': linkMode == 'file',
@@ -38,7 +41,7 @@
                 <div class="px-8 pb-8 bg-white">
                     <div v-show="linkMode == 'url'">
                         <div class="flex flex-col">
-                            <label 
+                            <label
                                 class="text-sm mb-1 ml-1"
                                 v-text="__('url')"
                             >
@@ -57,14 +60,14 @@
                                 placeholder="https://"
                             />
 
-                            <div 
+                            <div
                                 class="ml-1 mt-1 text-xs text-80"
                                 v-text="__('external links should start with http:// or https://')"
                             >
                             </div>
 
                             <div class="flex items-center mt-5">
-                                <input 
+                                <input
                                     :id="'openInNewWindow_'+field.attribute"
                                     type="checkbox"
                                     v-model="openInNewWindow"
@@ -79,20 +82,20 @@
                         </div>
                     </div>
 
-                    <div 
-                        v-if="withFileUpload" 
+                    <div
+                        v-if="withFileUpload"
                         v-show="linkMode == 'file'"
                     >
-                        <div 
+                        <div
                             class="flex items-center transition-opacity duration-150"
                             :class="{
                                 'pointer-events-none opacity-50': uploading
-                            }" 
-                        >   
+                            }"
+                        >
                             <label class="relative btn btn-default btn-primary">
-                                <input 
+                                <input
                                     ref="fileInput"
-                                    type="file" 
+                                    type="file"
                                     @change="changeFile($event.target.files)"
                                     class="opacity-0 w-full h-full absolute top-0 left-0"
                                 />
@@ -100,20 +103,20 @@
                             </label>
 
                             <div class="ml-8 h-16 flex items-center">
-                                <span 
+                                <span
                                     v-if="!file"
                                     v-text="__('no file selected')"
                                 >
                                 </span>
 
-                                <span 
+                                <span
                                     v-if="file"
                                     v-text="filename"
                                 >
                                 </span>
                             </div>
 
-                            <div 
+                            <div
                                 v-if="file"
                                 @click="removeFile()"
                                 class="
@@ -125,13 +128,13 @@
                             </div>
                         </div>
 
-                        <div 
+                        <div
                             class="w-full h-2 mt-4"
                             :class="{
                                 'bg-20': uploading
                             }"
                         >
-                            <div 
+                            <div
                                 class="
                                     bg-primary h-full
                                 "
@@ -145,7 +148,7 @@
                     </div>
 
                     <div class="mt-8">
-                        <label 
+                        <label
                             class="block text-sm mb-1 ml-1"
                             v-text="__('custom css classes')"
                         >
@@ -163,7 +166,7 @@
                             v-model="extraClasses"
                         />
 
-                        <label 
+                        <label
                             class="block text-sm mt-4 mb-1 ml-1"
                             v-text="__('title')"
                         >
@@ -185,7 +188,7 @@
                             grid grid-cols-3 gap-4
                         ">
                             <div class="flex items-center mt-5">
-                                <input 
+                                <input
                                     :id="'nofollow_'+field.attribute"
                                     type="checkbox"
                                     v-model="nofollow"
@@ -199,7 +202,7 @@
                             </div>
 
                             <div class="flex items-center mt-5">
-                                <input 
+                                <input
                                     :id="'noopener_'+field.attribute"
                                     type="checkbox"
                                     v-model="noopener"
@@ -213,7 +216,7 @@
                             </div>
 
                             <div class="flex items-center mt-5">
-                                <input 
+                                <input
                                     :id="'noreferrer_'+field.attribute"
                                     type="checkbox"
                                     v-model="noreferrer"
@@ -229,7 +232,7 @@
                     </div>
                 </div>
 
-                <div class="bg-30 px-6 py-3">   
+                <div class="bg-30 px-6 py-3">
                     <div class="flex items-center justify-end">
                         <button
                             type="button"
@@ -251,7 +254,7 @@
                 </div>
             </div>
 
-            <div 
+            <div
                 class="
                     z-10 absolute top-0 left-0 w-full h-full
                     bg-80 opacity-75
@@ -298,7 +301,7 @@ export default {
     mixins: [buttonHovers],
 
     props: [
-        'button', 
+        'button',
         'editor',
         'field',
         'mode',
@@ -370,7 +373,7 @@ export default {
                 this.extraClasses = '';
                 this.title = '';
             }
-            
+
             this.linkMenuIsActive = true;
         },
 
@@ -400,11 +403,11 @@ export default {
             e.preventDefault();
 
             this.uploading = true;
-            
+
             let data = new FormData();
-            data.append('file', this.file);   
-            data.append('disk', this.fileDisk);   
-            data.append('path', this.filePath);   
+            data.append('file', this.file);
+            data.append('disk', this.fileDisk);
+            data.append('path', this.filePath);
 
             const config = {
                 headers: {
@@ -417,7 +420,7 @@ export default {
                 .then(function (response) {
                     this.resetUploading();
                     this.removeFile();
-                    
+
                     let attributes = {
                         href: response.data.url,
                         'tt-mode': 'file',
@@ -425,7 +428,7 @@ export default {
                     };
 
                     this.setLink(attributes);
-                    
+
                     this.hideLinkMenu();
                 }.bind(this))
                 .catch(function (error) {
@@ -449,7 +452,7 @@ export default {
             }
 
             this.setLink(attributes);
-            
+
             this.hideLinkMenu();
         },
 
@@ -476,12 +479,12 @@ export default {
 
             if (this.editor.isActive('image')) {
                 let attributes = this.editor.getAttributes('image');
-                
+
             } else {
                 this.editor.chain().extendMarkRange('link').unsetLink().run();
                 this.editor.chain().focus().setLink(attributes).run();
             }
-            
+
         },
 
         unsetLink() {
