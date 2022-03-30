@@ -1,6 +1,7 @@
 window.pretty = require('pretty');
 window._ = require('lodash');
 window.axios = require('axios');
+import PortalVue from 'portal-vue'
 
 const attachPortalTarget = () => {
     if (typeof document === undefined) return
@@ -10,6 +11,8 @@ const attachPortalTarget = () => {
 }
 
 Nova.booting((Vue, router) => {
+    Vue.use(PortalVue)
+
     attachPortalTarget()
 
     Vue.component('detail-tiptap', require('./components/DetailField.vue').default);
