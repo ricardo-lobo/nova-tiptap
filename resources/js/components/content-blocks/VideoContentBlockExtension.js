@@ -40,6 +40,8 @@ export default Node.create({
     },
 
     renderHTML({ HTMLAttributes }) {
+        console.log(HTMLAttributes)
+
         return ['video-content-block', mergeAttributes(HTMLAttributes)]
     },
 
