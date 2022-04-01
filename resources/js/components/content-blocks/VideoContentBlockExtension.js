@@ -40,7 +40,9 @@ export default Node.create({
     },
 
     renderHTML({ HTMLAttributes }) {
-        console.log(HTMLAttributes)
+        const tag = ['video-content-block', mergeAttributes(HTMLAttributes)]
+
+        debugger
 
         return ['video-content-block', mergeAttributes(HTMLAttributes)]
     },
